@@ -10,7 +10,7 @@
     <version>1.8.0-beta5-SNAPSHOT</version>
   </parent>
 
-  <artifactId>slf4j-api</artifactId>
+  <artifactId>slf4j-api-jfrog</artifactId>
 
   <packaging>jar</packaging>
   <name>SLF4J API Module</name>

@@ -110,6 +110,11 @@ public final class LoggerFactory {
     }
 
     /**
+     * Indicates whether or not to use the delegate logger
+     */
+    static boolean USE_DELEGATING_LOGGER = System.getProperty("logback.ContextSelector") != null;
+
+    /**
      * It is LoggerFactory's responsibility to track version changes and manage
      * the compatibility list.
      * <p/>
@@ -351,6 +356,9 @@ public final class LoggerFactory {
      * @return logger
      */
     public static Logger getLogger(String name) {
+        if (USE_DELEGATING_LOGGER) {
+            return new DelegatingLogger(name);
+        }
         ILoggerFactory iLoggerFactory = getILoggerFactory();
         return iLoggerFactory.getLogger(name);
     }
