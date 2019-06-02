@@ -31,7 +31,7 @@
 		<pathelement location="${lib}/log4j-over-slf4j-${slf4jversion}.jar" />
 		<pathelement location="${lib}/logback-classic-${lbversion}.jar" />
 		<pathelement location="${lib}/logback-core-${lbversion}.jar" />
-		<pathelement location="${lib}/slf4j-api-${slf4jversion}.jar" />
+		<pathelement location="${lib}/slf4j-api-jfrog-${slf4jversion}.jar" />
 	</path>
 
 	<!-- ================================================================= -->
@@ -57,7 +57,7 @@
         <include name="log4j-bridge-*.jar"/>
       </fileset>
     </delete>
-    <copy file="../../slf4j-api/target/slf4j-api-${slf4jversion}.jar" todir="lib/"/>
+    <copy file="../../slf4j-api/target/slf4j-api-jfrog-${slf4jversion}.jar" todir="lib/"/>
     <copy file="../target/log4j-over-slf4j-${slf4jversion}.jar" todir="lib/"/>
 
   </target>

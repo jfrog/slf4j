@@ -208,8 +208,8 @@
 			<directory>slf4j-api/target/</directory>
 			<outputDirectory>/</outputDirectory>
 			<includes>
-				<include>slf4j-api-${project.version}-sources.jar</include>
-				<include>slf4j-api-${project.version}.jar</include>
+				<include>slf4j-api-jfrog-${project.version}-sources.jar</include>
+				<include>slf4j-api-jfrog-${project.version}.jar</include>
 			</includes>
 		</fileSet>
 

@@ -2,13 +2,13 @@
 
 	<!--
 		This build file is usually run indirectly via Maven.
-		
+
 		When running this build file through Ant directly, you must
 		define the currentVersion property on the command line, e.g.:
-		
-		ant  -DcurrentVersion=1.5.4-SNAPSHOT	
+
+		ant  -DcurrentVersion=1.5.4-SNAPSHOT
 	-->
-	
+
 	<echo message="compile classpath: ${compile_classpath}" />
 	<echo message="runtime classpath: ${runtime_classpath}" />
 	<echo message="test classpath:    ${test_classpath}" />
@@ -21,13 +21,13 @@
 
 	<path id="path142Binding">
 		<pathelement location="target/test-classes/" />
-		<pathelement location="../slf4j-api/target/slf4j-api-${currentVersion}.jar" />
+		<pathelement location="../slf4j-api/target/slf4j-api-jfrog-${currentVersion}.jar" />
 		<pathelement location="./lib/slf4j-simple-1.4.2.jar" />
 	</path >
 
 	<path id="path150Binding">
 		<pathelement location="target/test-classes/" />
-		<pathelement location="../slf4j-api/target/slf4j-api-${currentVersion}.jar" />
+		<pathelement location="../slf4j-api/target/slf4j-api-jfrog-${currentVersion}.jar" />
 		<pathelement location="./lib/slf4j-simple-1.5.0.jar" />
 	</path >
 
@@ -39,47 +39,47 @@
 
 	<path id="path1511Binding">
 		<pathelement location="target/test-classes/" />
-		<pathelement location="../slf4j-api/target/slf4j-api-${currentVersion}.jar" />
+		<pathelement location="../slf4j-api/target/slf4j-api-jfrog-${currentVersion}.jar" />
 		<pathelement location="./lib/slf4j-simple-1.5.11.jar" />
 	</path >
 
   <!--<path id="pathIncompatible">
 		<pathelement location="target/test-classes/" />
-		<pathelement location="../slf4j-api/target/slf4j-api-${currentVersion}.jar" />
+		<pathelement location="../slf4j-api/target/slf4j-api-jfrog-${currentVersion}.jar" />
 		<pathelement location="./lib/slf4j-simple-INCOMPATIBLE.jar" />
 	</path >
   -->
 
 	<path id="pathCurrent">
 		<pathelement location="target/test-classes/" />
-		<pathelement location="../slf4j-api/target/slf4j-api-${currentVersion}.jar" />
+		<pathelement location="../slf4j-api/target/slf4j-api-jfrog-${currentVersion}.jar" />
 		<pathelement location="../slf4j-simple/target/slf4j-simple-${currentVersion}.jar" />
 	</path >
 
 
 	<path id="incompatibleMultiBinding">
 		<pathelement location="target/test-classes/" />
-		<pathelement location="../slf4j-api/target/slf4j-api-${currentVersion}.jar" />
+		<pathelement location="../slf4j-api/target/slf4j-api-jfrog-${currentVersion}.jar" />
 		<pathelement location="./lib/slf4j-simple-1.5.0.jar" />
 		<pathelement location="./lib/slf4j-nop-1.5.6.jar" />
 	</path >
 
   <path id="multiBinding">
  		<pathelement location="target/test-classes/" />
- 		<pathelement location="../slf4j-api/target/slf4j-api-${currentVersion}.jar" />
+ 		<pathelement location="../slf4j-api/target/slf4j-api-jfrog-${currentVersion}.jar" />
     <pathelement location="../slf4j-simple/target/slf4j-simple-${currentVersion}.jar" />
     <pathelement location="../slf4j-nop/target/slf4j-nop-${currentVersion}.jar" />
  	</path >
 
   <path id="binding166">
 		<pathelement location="target/test-classes/" />
-		<pathelement location="../slf4j-api/target/slf4j-api-${currentVersion}.jar" />
+		<pathelement location="../slf4j-api/target/slf4j-api-jfrog-${currentVersion}.jar" />
 		<pathelement location="./lib/slf4j-simple-1.6.6.jar" />
 	</path >
 
   <path id="binding2099">
 		<pathelement location="target/test-classes/" />
-		<pathelement location="../slf4j-api/target/slf4j-api-${currentVersion}.jar" />
+		<pathelement location="../slf4j-api/target/slf4j-api-jfrog-${currentVersion}.jar" />
 		<pathelement location="./lib/slf4j-simple-2.0.99.jar" />
 	</path >
 
@@ -94,14 +94,14 @@
 	<!-- this is really very ugly, but it's the only way to circumvent
   	     http://jira.codehaus.org/browse/MANTRUN-95
 	-->
-	<taskdef name="junit" classpath="${plugin_classpath};${compile_classpath}" 
+	<taskdef name="junit" classpath="${plugin_classpath};${compile_classpath}"
            classname="org.apache.tools.ant.taskdefs.optional.junit.JUnitTask" />
 
 	<target name="init">
 		<mkdir dir="target/unit-reports" />
 	</target>
 
-	<target name="testAll" depends="init, 
+	<target name="testAll" depends="init,
 		            testMissingSingletonMethod,
                 testMismatch,
                 testMatch,
@@ -118,15 +118,15 @@
 			<classpath refid="path142Binding" />
 			<formatter type="plain" />
 			<test fork="yes" todir="target/unit-reports"
-            outfile="TEST-142BININDING" 
+            outfile="TEST-142BININDING"
             name="org.slf4j.MissingSingletonMethodAssertionTest" />
 		</junit>
 
     <junit printsummary="yes" fork="no" haltonfailure="yes">
 			<classpath refid="path150Binding" />
 			<formatter type="plain" />
-			<test fork="yes" todir="target/unit-reports" 
-            outfile="TEST-150BINDING" 
+			<test fork="yes" todir="target/unit-reports"
+            outfile="TEST-150BINDING"
             name="org.slf4j.MissingSingletonMethodAssertionTest" />
 		</junit>
 
@@ -138,8 +138,8 @@
     <junit printsummary="yes" fork="no" haltonfailure="yes">
 			<classpath refid="pathMixed17" />
 			<formatter type="plain" />
-			<test fork="yes" todir="target/unit-reports" 
-            outfile="TEST-MIXED-17" 
+			<test fork="yes" todir="target/unit-reports"
+            outfile="TEST-MIXED-17"
             name="org.slf4j.VersionMismatchAssertionTest" />
 		</junit>
   </target>
@@ -150,8 +150,8 @@
     <junit printsummary="yes" fork="no" haltonfailure="yes">
 			<classpath refid="path1511API" />
 			<formatter type="plain" />
-			<test fork="yes" todir="target/unit-reports" 
-            outfile="TEST-MISMATCH-1511API" 
+			<test fork="yes" todir="target/unit-reports"
+            outfile="TEST-MISMATCH-1511API"
             name="org.slf4j.VersionMismatchAssertionTest" />
 		</junit>
 
@@ -159,8 +159,8 @@
     <junit printsummary="yes" fork="no" haltonfailure="yes">
 			<classpath refid="path1511Binding" />
 			<formatter type="plain" />
-			<test fork="yes" todir="target/unit-reports" 
-            outfile="TEST-MISMATCH-1511Binding" 
+			<test fork="yes" todir="target/unit-reports"
+            outfile="TEST-MISMATCH-1511Binding"
             name="org.slf4j.VersionMismatchAssertionTest" />
 		</junit>
 
@@ -170,8 +170,8 @@
 		<junit printsummary="yes" fork="no" haltonfailure="yes">
 			<classpath refid="pathCurrent" />
 			<formatter type="plain" />
-			<test fork="yes" todir="target/unit-reports" 
-            outfile="TEST-Match" 
+			<test fork="yes" todir="target/unit-reports"
+            outfile="TEST-Match"
             name="org.slf4j.CompatibilityAssertionTest" />
 		</junit>
 	</target>
@@ -180,7 +180,7 @@
 		<junit printsummary="yes" fork="no" haltonfailure="yes">
 			<classpath refid="incompatibleMultiBinding" />
 			<formatter type="plain" />
-			<test fork="yes" todir="target/unit-reports" 
+			<test fork="yes" todir="target/unit-reports"
             outfile="TEST-IncompatibleMultiBinding"
             name="org.slf4j.IncompatibleMultiBindingAssertionTest" />
 		</junit>
@@ -200,16 +200,16 @@
 		<junit printsummary="yes" fork="no" haltonfailure="yes">
 			<classpath refid="binding166" />
 			<formatter type="plain" />
-			<test fork="yes" todir="target/unit-reports" 
+			<test fork="yes" todir="target/unit-reports"
             outfile="TEST-binding166"
             name="org.slf4j.CompatibilityAssertionTest" />
 		</junit>
 
-    
+
     <junit printsummary="yes" fork="no" haltonfailure="yes">
       <classpath refid="api166" />
       <formatter type="plain" />
-      <test fork="yes" todir="target/unit-reports" 
+      <test fork="yes" todir="target/unit-reports"
             outfile="TEST-api166"
             name="org.slf4j.CompatibilityAssertionTest" />
 		</junit>
@@ -239,8 +239,8 @@
       <jvmarg value="-Dslf4j.detectLoggerNameMismatch=true"/>
 			<classpath refid="pathCurrent" />
 			<formatter type="plain" />
-			<test fork="yes" todir="target/unit-reports" 
-            outfile="TEST-SecurityManager" 
+			<test fork="yes" todir="target/unit-reports"
+            outfile="TEST-SecurityManager"
             name="org.slf4j.issues.Issue324Test" />
 		</junit>
 	</target>
